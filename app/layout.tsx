@@ -9,8 +9,11 @@ export const metadata: Metadata = {
     template: '%s | Axios Dashboard',
     default: 'Axios Dashboard',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
+  description: 'The official Dashboard for Microsoft Entra Sign-ins',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -21,12 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-    <div className="flex h-screen flex-row overflow-hidden bg-purple-50">
-      <div className="w-full flex-none md:w-64">
-        <SideNav />
-      </div>
-      {children}
-    </div>
+      <link rel="icon" href="/favicon.png" sizes="any" />
+        <div className="flex h-screen flex-row overflow-hidden bg-purple-50">
+          <div className="w-full flex-none md:w-64">
+            <SideNav />
+          </div>
+          {children}
+        </div>
       </body>
     </html>
   );
