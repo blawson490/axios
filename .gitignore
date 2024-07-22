@@ -36,3 +36,4 @@ yarn-error.log*
 next-env.d.ts
 app/lib/database-placeholder.ts
 app/lib/placeholder-data.ts
+.env

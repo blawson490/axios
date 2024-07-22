@@ -1,18 +1,20 @@
 "use client";
-import { validateUser } from '@/app/lib/actions';
+import { authenticate } from '@/app/lib/actions';
 import { Organization } from '@/app/lib/definitions';
-import { EyeSlashIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { ExclamationCircleIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { useActionState, useState } from 'react';
 
 export default function LoginForm({
     organization
 }: {
     organization: Organization;
 }) {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const loginUser = validateUser.bind(null)
+  const [errorMessage, formAction, isPending] = useActionState(
+    authenticate,
+    undefined
+  )
     return (
-        <form action={loginUser}>
+        <form action={formAction}>
             <div className='mb-10'>
                 <label className="block text-white font-bold text-xl my-4 opacity-75">{organization.orgName}</label>
 
@@ -35,14 +37,21 @@ export default function LoginForm({
                     <EyeSlashIcon className="h-5 w-5 absolute top-2 right-2 text-gray-500 cursor-pointer" />
                 </div>
 
-                <div className="flex justify-end mb-4">
+                <div className="flex justify-between mb-4">
+                  {errorMessage && (
+                    <div className='flex flex-row gap-2 mb-2 justify-start'>
+                      <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                      <p className="text-sm text-red-500">{errorMessage}</p>
+                    </div>
+                  )}
+                  <div className='flex w-full justify-end'>
                   <a href="#" className="text-purple-500">
                     Forgot Password?
                   </a>
                 </div>
+                </div>
             </div>
-            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-            <button type="submit" className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+            <button type="submit" className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700" aria-disabled={isPending}>
               Login
             </button>
 

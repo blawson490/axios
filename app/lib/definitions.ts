@@ -15,7 +15,7 @@ export type Organization = {
   
   // Define the User type
   export type User = {
-    userId: string;
+    id: string;
     userFirstName: string;
     userLastName: string;
     userPrincipalName: string;
@@ -39,3 +39,14 @@ export type Organization = {
     teamUsers: TeamUser[];
   };
   
+
+
+export type FormattedUsersTable = {
+  id: string;
+  userFirstName: string;
+  userLastName: string;
+  userPrincipalName: string;
+  userDisplayName: string;
+  department: string;
+  jobTitle: string;
+}

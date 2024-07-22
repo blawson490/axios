@@ -1,3 +1,4 @@
+import { authenticate } from '@/app/lib/actions';
 import { fetchOrganiationById } from '@/app/lib/database-placeholder';
 import LoginForm from '@/app/ui/login/organization-login-form';
 import { EyeSlashIcon } from '@heroicons/react/24/outline';
@@ -13,9 +14,9 @@ export default async function Login({ params }: { params : { id: string } }) {
     const id = params.id
     const organization = await fetchOrganiationById(id);
 
-    if (!organization) {
-        notFound();
-    }
+  if (!organization) {
+      notFound();
+  }
 
   return (
     <div

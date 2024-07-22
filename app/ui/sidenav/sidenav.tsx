@@ -2,7 +2,7 @@ import Link from 'next/link';
 import NavLinks from '@/app/ui/sidenav/nav-links';
 import AxiosLogo from '@/app/ui/sidenav/axios-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
-import { signout } from '@/app/lib/actions';
+import { signOut } from '@/auth';
 
 export default function SideNav() {
   return (
@@ -22,7 +22,7 @@ export default function SideNav() {
             <form className='w-full px-2 py-2' 
             action={async () => {
               'use server';
-              await signout();
+              await signOut();
             }}>
               <button className="flex w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-purple-50 hover:text-purple-600 md:flex-none md:justify-start md:p-2 md:px-3 border-2">
                 <div className="flex items-center w-full justify-center md:block">Sign Out</div>
