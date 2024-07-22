@@ -19,26 +19,26 @@ const sections = [
     {
       title: 'GENERAL',
       links: [
-        { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
-        { name: 'Users', href: '/users', icon: UserGroupIcon },
-        { name: 'Logs', href: '/logs', icon: ClipboardDocumentListIcon },
+        { name: 'Dashboard', href: '/dashboard/dashboard', icon: HomeIcon },
+        { name: 'Users', href: '/dashboard/users', icon: UserGroupIcon },
+        { name: 'Logs', href: '/dashboard/logs', icon: ClipboardDocumentListIcon },
       ],
     },
     {
       title: 'TOOLS',
       links: [
-        { name: 'Overview', href: '/overview', icon: EyeIcon },
-        { name: 'Reports', href: '/reports', icon: ChartBarIcon },
-        { name: 'Alerts', href: '/alerts', icon: ExclamationCircleIcon },
+        { name: 'Overview', href: '/dashboard/overview', icon: EyeIcon },
+        { name: 'Reports', href: '/dashboard/reports', icon: ChartBarIcon },
+        { name: 'Alerts', href: '/dashboard/alerts', icon: ExclamationCircleIcon },
       ],
     },
     {
       title: 'SUPPORT',
       links: [
-        { name: 'Settings', href: '/settings', icon: Cog6ToothIcon },
-        { name: 'Documentation', href: '/documentation', icon: DocumentTextIcon },
-        { name: 'FAQ', href: '/faq', icon: QuestionMarkCircleIcon },
-        { name: 'Contact Us', href: '/contact', icon: EnvelopeIcon },
+        { name: 'Settings', href: '/dashboard/settings', icon: Cog6ToothIcon },
+        { name: 'Documentation', href: '/dashboard/documentation', icon: DocumentTextIcon },
+        { name: 'FAQ', href: '/dashboard/faq', icon: QuestionMarkCircleIcon },
+        { name: 'Contact Us', href: '/dashboard/contact', icon: EnvelopeIcon },
       ],
     },
   ];

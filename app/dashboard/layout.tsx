@@ -1,6 +1,6 @@
 import '@/app/ui/global.css'
 import { Metadata } from 'next';
-import { inter } from './ui/fonts';
+import SideNav from '../ui/sidenav/sidenav';
  
 export const metadata: Metadata = {
   title: {
@@ -20,11 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <link rel="icon" href="/favicon.png" sizes="any" />
-      <body className={`${inter.className} antialiased`}>
+        <div className="flex h-screen flex-row overflow-hidden bg-purple-50">
+          <div className="w-full flex-none md:w-64">
+            <SideNav />
+          </div>
           {children}
-      </body>
-    </html>
+        </div>
   );
 }
