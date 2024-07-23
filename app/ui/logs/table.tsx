@@ -1,42 +1,43 @@
-import { fetchFilteredUsers } from "@/app/lib/database-placeholder";
+import { fetchFilteredLogs } from "@/app/lib/database-placeholder";
 import InitialsAvatar from "../initials-avatar";
 
-export default async function UsersTable({
+export default async function LogsTable({
     query,
     currentPage,
 }: {
     query: string,
     currentPage: number;
 }) {
-    const users = await fetchFilteredUsers(query, currentPage)
+    const logs = await fetchFilteredLogs(query, currentPage)
 
     return (
-        <div className="mt-6 flow-root">
+    <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-            {users?.map((user) => (
+            {logs?.map((log) => (
               <div
-                key={user.id}
+                key={log.id}
                 className="mb-2 w-full rounded-md bg-white p-4"
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
                     <div className="mb-2 flex items-center">
                         <div className="text-2xl flex w-2 h-2">
-                            <InitialsAvatar name={user.userDisplayName} />
+                            <InitialsAvatar name={log.userDisplayName} />
                         </div>
-                      <p>{user.userDisplayName}</p>
+                      <p>{log.userDisplayName}</p>
                     </div>
-                    <p className="text-sm text-gray-500">{user.userPrincipalName}</p>
+                    <p className="text-sm text-gray-500">{log.userPrincipalName}</p>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
                     <p className="text-xl font-medium">
-                      {user.department}
+                      {log.appDisplayName}
                     </p>
-                    <p>{user.jobTitle}</p>
+                    <p>{log.ipAddress}</p>
+                    
                   </div>
                 </div>
               </div>
@@ -52,15 +53,15 @@ export default async function UsersTable({
                   Email
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Department
+                  App
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Job Title
+                  IP Address
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white">
-              {users?.map((user) => (
+              {logs?.map((user) => (
                 <tr
                   key={user.id}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
@@ -75,10 +76,10 @@ export default async function UsersTable({
                     {user.userPrincipalName}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {user.department}
+                    {user.appDisplayName}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {user.jobTitle}
+                    {user.ipAddress}
                   </td>
                 </tr>
               ))}
