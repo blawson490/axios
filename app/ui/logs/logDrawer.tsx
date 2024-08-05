@@ -47,7 +47,7 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
         </div>
       </DrawerHeader>
       <ScrollArea className="h-full w-full mb-4">
-        <div className="flex flex-col gap-1">
+        <div className="flex h-full flex-col gap-1">
           <div className=" flex flex-row justify-between">
             <div className="flex-col p-4">
               <p className="text-gray-500 font-semibold text-sm">
@@ -83,7 +83,7 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
               </div>
             </div>
           </div>
-          <Card className="mx-4 h-96 border-0 shadow-none bg-gray-50 rounded-lg mb-4">
+          <Card className="mx-4 border-0 shadow-none bg-gray-50 rounded-lg mb-4">
             <CardHeader className="p-2 border-0">
               <CardTitle className="text-sm font-semibold text-gray-500">
                 Location Details:
@@ -120,7 +120,11 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
                 </div>
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-2">This will be a Map</CardContent>
+            <CardContent className="p-2">
+              <div className="bg-gray-200 h-72 rounded-lg flex items-center justify-center">
+                <p>Location Map comming soon</p>
+              </div>
+            </CardContent>
           </Card>
           <Tabs defaultValue="device" className="mx-4">
             <Card className="h-80 border-0 shadow-none">
