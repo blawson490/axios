@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
 export const generatePagination = (currentPage: number, totalPages: number) => {
     // If the total number of pages is 7 or less,
     // display all pages without any ellipsis.
@@ -54,3 +57,7 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     }
     return str.slice(0, num) + "...";
   };
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}

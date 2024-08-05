@@ -1,4 +1,3 @@
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 
 export default function ConditionalAccessStatus({ status }: { status: string }) {
@@ -13,22 +12,19 @@ export default function ConditionalAccessStatus({ status }: { status: string }) 
       )}
     >
       {status === 'notApplied' ? (
-        <div className='flex text-white p-1 pr-2 rounded-full bg-yellow-500'>
-          <XMarkIcon className="ml-1 w-4 text-white" />
-          Not Applied
+        <div className='flex text-white p-1 px-2 rounded-md bg-gray-200/20 border-gray-600 border'>
+          <p className='text-gray-600 font-medium'>Not Applied</p>
         </div>
       ) : null}
       {status === 'success' ? (
-        <div className='flex text-white p-1 pr-2 rounded-full bg-green-500'>
-          <CheckIcon className="ml-1 w-4 text-white bg-green-500" />
-          Success
+        <div className='flex text-white p-1 px-2 rounded-md bg-green-200/20 border-green-600 border'>
+          <p className='text-green-600 font-medium'>Success</p>
         </div>
       ) : null}
       {status === 'failure' ? (
-        <div className='flex text-white p-1 pr-2 rounded-full bg-red-500'>
-          <XMarkIcon className="ml-1 w-4 text-white bg-red-500" />
-          Failed
-        </div>
+         <div className='flex text-white p-1 px-2 rounded-md bg-red-200/20 border-red-600 border'>
+         <p className='text-red-600 font-medium'>Failed</p>
+       </div>
       ) : null}
     </span>
   );
