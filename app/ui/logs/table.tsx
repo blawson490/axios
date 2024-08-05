@@ -1,6 +1,8 @@
 import { fetchFilteredLogs } from "@/app/lib/database-placeholder";
 import InitialsAvatar from "../initials-avatar";
-
+import { LogEntry } from "@/app/lib/definitions";
+import { formatDateToLocal, truncateString } from "@/app/lib/utils";
+import ConditionalAccessStatus from "./status";
 export default async function LogsTable({
     query,
     currentPage,
@@ -15,9 +17,9 @@ export default async function LogsTable({
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-            {logs?.map((log) => (
+            {logs?.map((log: LogEntry) => (
               <div
-                key={log.id}
+                key={log.logId}
                 className="mb-2 w-full rounded-md bg-white p-4"
               >
                 <div className="flex items-center justify-between border-b pb-4">
@@ -50,36 +52,54 @@ export default async function LogsTable({
                   User
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
+                  Created
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
                   Email
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   App
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
+                  Location
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
                   IP Address
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Conditional Access
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white">
-              {logs?.map((user) => (
+              {logs?.map((log: LogEntry) => (
                 <tr
-                  key={user.id}
+                  key={log.logId}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex items-center gap-3">
-                    <InitialsAvatar name={user.userDisplayName} />
-                      <p>{user.userDisplayName}</p>
+                    <InitialsAvatar name={log.userDisplayName} />
+                      <p>{truncateString(log.userDisplayName, 16)}</p>
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {user.userPrincipalName}
+                    {formatDateToLocal(log.createdDateTime)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {user.appDisplayName}
+                    {truncateString(log.userPrincipalName, 24)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {user.ipAddress}
+                    {truncateString(log.appDisplayName, 24)}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {truncateString(`${log.locationCity}, ${log.locationState}, ${log.locationCountryOrRegion}`, 26)}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {truncateString(log.ipAddress, 19)}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    <ConditionalAccessStatus status={log.conditionalAccessStatus} />
                   </td>
                 </tr>
               ))}

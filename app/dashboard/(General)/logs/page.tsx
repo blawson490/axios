@@ -38,7 +38,7 @@ export default async function Page({
   return (
     <div className='flex flex-col w-full'>
       <TopBar breadcrumbs={breadcrumbs} />
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+      <div className="flex-grow p-6 md:overflow-y-auto md:p-6">
         <div className="w-full">
           <div className="flex w-full items-center justify-between">
             <h1 className={`${inter.className} text-2xl`}>Logs</h1>

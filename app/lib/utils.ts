@@ -31,3 +31,26 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     ];
   };
   
+
+  export const formatDateToLocal = (
+    dateStr: string,
+    locale: string = 'en-US',
+  ) => {
+    const date = new Date(dateStr);
+    const options: Intl.DateTimeFormatOptions = {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    const formatter = new Intl.DateTimeFormat(locale, options);
+    return formatter.format(date);
+  };
+
+  export const truncateString = (str: string, num: number) => {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + "...";
+  };

@@ -39,6 +39,40 @@ export type Organization = {
     teamUsers: TeamUser[];
   };
   
+  export type LogEntry = {
+    logId: string;
+    createdDateTime: string; // ISO 8601 date-time string
+    userDisplayName: string;
+    userPrincipalName: string;
+    userId: string;
+    appId: string;
+    appDisplayName: string;
+    ipAddress: string;
+    clientAppUsed: string;
+    conditionalAccessStatus: string;
+    isInteractive: number; // Assuming 1 for true, 0 for false
+    riskDetail: string;
+    riskLevelAggregated: string;
+    riskLevelDuringSignIn: string;
+    riskState: string;
+    resourceDisplayName: string;
+    resourceId: string;
+    statusErrorCode: number;
+    statusFailureReason: string;
+    statusAdditionalDetails: string;
+    deviceDetailDeviceId: string;
+    deviceDetailDisplayName: string;
+    deviceDetailOperatingSystem: string;
+    deviceDetailBrowser: string;
+    deviceDetailIsCompliant: number; // Assuming 1 for true, 0 for false
+    deviceDetailIsManaged: number; // Assuming 1 for true, 0 for false
+    deviceDetailTrustType: string;
+    locationCity: string;
+    locationState: string;
+    locationCountryOrRegion: string;
+    locationGeoCoordinatesLatitude: number;
+    locationGeoCoordinatesLongitude: number;
+  };
 
 
 export type FormattedUsersTable = {
