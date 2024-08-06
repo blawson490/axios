@@ -126,8 +126,7 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-2">
-              <div className="bg-gray-200 h-72 rounded-lg relative">
-                {/* <p>Location Map comming soon</p> */}
+              <div className="bg-gray-200 h-72 rounded-lg flex relative">
                 <MyMap
                   location={{
                     lat: log.locationGeoCoordinatesLatitude,
