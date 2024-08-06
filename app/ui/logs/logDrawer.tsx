@@ -5,6 +5,7 @@ import { formatDateToLocal, truncateString } from '@/app/lib/utils';
 import ConditionalAccessStatus from './conditionalAccessStatus';
 import SuccessStatus from './successStatus';
 import {
+  ArrowUpRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   XMarkIcon,
@@ -56,10 +57,13 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
               <div className="flex flex-row py-2">
                 <div className="flex flex-row gap-3 items-center justify-center cursor-pointer">
                   <InitialsAvatar name={log.userDisplayName} />
-                  <div className="flex-col">
-                    <p className="font-semibold">
-                      {truncateString(log.userDisplayName, 50)}
-                    </p>
+                  <div className="flex-col hover:underline hover:underline-offset-2">
+                    <div className="flex flex-row gap-2 items-center">
+                      <p className="font-semibold">
+                        {truncateString(log.userDisplayName, 50)}
+                      </p>
+                      <ArrowUpRightIcon className="w-3 h-3" />
+                    </div>
                     <p className="text-gray-500 text-sm">
                       {truncateString(log.userPrincipalName, 50)}
                     </p>
