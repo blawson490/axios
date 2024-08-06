@@ -4,11 +4,11 @@ import * as maptilersdk from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 // import './map.css';
 
-export default function MyMap({ location }) {
+export default function MyMap({ location, mapZoom }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const latLongLocation = { lng: location.long, lat: location.lat };
-  const [zoom] = useState(3);
+  const [zoom] = useState(mapZoom);
   maptilersdk.config.apiKey = '8hXtz0aVeDD9gkZhACWl';
   const markerContainer = document.createElement('div');
   markerContainer.className = 'relative pr-2';
@@ -38,7 +38,7 @@ export default function MyMap({ location }) {
   }, [latLongLocation.lng, latLongLocation.lat, zoom]);
 
   return (
-    <div className="map-wrap h-72 relative w-full rounded-lg">
+    <div className="map-wrap h-full relative w-full rounded-lg">
       <div ref={mapContainer} className="absolute w-full h-full rounded-lg" />
     </div>
   );

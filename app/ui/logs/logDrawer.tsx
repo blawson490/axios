@@ -5,9 +5,11 @@ import { formatDateToLocal, truncateString } from '@/app/lib/utils';
 import ConditionalAccessStatus from './conditionalAccessStatus';
 import SuccessStatus from './successStatus';
 import {
+  ArrowUpOnSquareIcon,
   ArrowUpRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ShareIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import {
@@ -30,21 +32,35 @@ import {
 import { ScrollArea } from '../scrollarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../tabs';
 import MyMap from './map/mymap';
+import Link from 'next/link';
 
 export default async function LogDrawer({ log }: { log: LogEntry }) {
   // export default async function LogDrawer() {
   return (
     <div className="w-full">
       <DrawerHeader>
-        <div className="flex flex-row gap-2 w-full">
-          <DrawerClose asChild>
-            <button className="bg-gray-200 rounded-md p-1">
-              <ChevronLeftIcon className="text-black w-5 h-5" />
-            </button>
-          </DrawerClose>
-          <div>
-            <DrawerTitle className="p-1">Back to Logs</DrawerTitle>
+        <div className="flex flex-row justify-between w-full">
+          <div className="flex flex-row gap-2 justify-center items-center">
+            <DrawerClose asChild>
+              <button className="bg-gray-50 rounded-md p-1">
+                <ChevronLeftIcon className="text-black w-5 h-5" />
+              </button>
+            </DrawerClose>
+            <DrawerTitle className="p-1">Back to logs</DrawerTitle>
             {/* <DrawerDescription>See the details of the activity log.</DrawerDescription> */}
+          </div>
+          <div className="flex flex-row justify-center items-center gap-4">
+            <div className="flex flex-row justify-center gap-2">
+              <button className="rounded-md p-1 border">
+                <ArrowUpOnSquareIcon className="text-black w-7 h-5" />
+              </button>
+              <Link
+                href={`/log/${log.logId}`}
+                className="rounded-md p-1 px-2 border"
+              >
+                <p className="text-xs font-medium">View Full Details</p>
+              </Link>
+            </div>
           </div>
         </div>
       </DrawerHeader>
@@ -132,6 +148,7 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
                     lat: log.locationGeoCoordinatesLatitude,
                     long: log.locationGeoCoordinatesLongitude,
                   }}
+                  mapZoom={3}
                 />
               </div>
             </CardContent>
