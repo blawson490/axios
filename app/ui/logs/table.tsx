@@ -77,7 +77,7 @@ export default async function LogsTable({
             </thead>
             <tbody className="bg-white">
               {logs?.map((log: LogEntry) => (
-                <Drawer direction="right" key={log.logId}>
+                <Drawer dismissible={false} direction="right" key={log.logId}>
                   <DrawerTrigger asChild key={log.logId}>
                     <tr
                       key={log.logId}

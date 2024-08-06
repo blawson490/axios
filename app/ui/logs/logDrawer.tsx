@@ -29,6 +29,7 @@ import {
 } from '../card';
 import { ScrollArea } from '../scrollarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../tabs';
+import MyMap from './map/mymap';
 
 export default async function LogDrawer({ log }: { log: LogEntry }) {
   // export default async function LogDrawer() {
@@ -125,8 +126,14 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-2">
-              <div className="bg-gray-200 h-72 rounded-lg flex items-center justify-center">
-                <p>Location Map comming soon</p>
+              <div className="bg-gray-200 h-72 rounded-lg relative">
+                {/* <p>Location Map comming soon</p> */}
+                <MyMap
+                  location={{
+                    lat: log.locationGeoCoordinatesLatitude,
+                    long: log.locationGeoCoordinatesLongitude,
+                  }}
+                />
               </div>
             </CardContent>
           </Card>
