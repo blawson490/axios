@@ -4,14 +4,15 @@ import { inter } from '@/app/ui/fonts';
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
-type IconType = ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'> & RefAttributes<SVGSVGElement>>;
-
+type IconType = ForwardRefExoticComponent<
+  Omit<SVGProps<SVGSVGElement>, 'ref'> & RefAttributes<SVGSVGElement>
+>;
 
 export interface Breadcrumb {
   label: string;
   href: string;
   active?: boolean;
-  icon?: IconType
+  icon?: IconType;
 }
 
 export default function Breadcrumbs({
@@ -30,7 +31,7 @@ export default function Breadcrumbs({
               aria-current={breadcrumb.active}
               className={clsx(
                 breadcrumb.active ? 'text-gray-900' : 'text-gray-500',
-                'flex items-center text-lg hover:text-purple-900'
+                'flex items-center text-sm hover:text-purple-900'
               )}
             >
               {index === 0 && BreadcrumbIcon && (

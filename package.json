@@ -12,20 +12,29 @@
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "@maptiler/sdk": "^2.2.1",
+    "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-scroll-area": "^1.1.0",
+    "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-tabs": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "heroicons": "^2.1.5",
-    "next": "14.3.0-canary.46",
+    "next": "^14.2.5",
     "next-auth": "^5.0.0-beta.19",
-    "react": "^18",
+    "react": "^18.3.1",
     "react-dom": "^18",
+    "react-is": "19.0.0-rc-6f23540c7d-20240528",
+    "recharts": "^2.12.7",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "use-debounce": "^10.0.1",
     "vaul": "^0.9.1",
     "zod": "^3.23.8"
+  },
+  "overrides": {
+    "recharts": {
+      "react-is": "$react-is"
+    }
   },
   "devDependencies": {
     "@types/node": "^20",
