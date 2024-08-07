@@ -18,8 +18,12 @@ const getInitials = (name: string): string => {
 // Helper function to get a random color
 const getRandomColor = (): string => {
   const colors = [
-    'bg-red-500', 'bg-blue-500', 'bg-green-500',
-    'bg-yellow-500', 'bg-purple-500', 'bg-pink-500'
+    'bg-red-500',
+    'bg-blue-500',
+    'bg-green-500',
+    'bg-yellow-500',
+    'bg-purple-500',
+    'bg-pink-500',
   ];
   return colors[Math.floor(Math.random() * colors.length)];
 };
@@ -33,7 +37,9 @@ const InitialsAvatar: React.FC<InitialsAvatarProps> = ({ name }) => {
   const backgroundColor = getRandomColor();
 
   return (
-    <div className={`flex items-center w-8 h-8 text-md justify-center rounded-full ${backgroundColor} text-white`}>
+    <div
+      className={`flex items-center w-8 h-8 text-md justify-center rounded-full ${backgroundColor} text-white`}
+    >
       <span className="font-bold">{initials}</span>
     </div>
   );

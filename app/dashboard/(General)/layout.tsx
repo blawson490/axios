@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <div className="flex flex-row h-full w-full">
-      <div className="w-full h-full flex-none md:w-64">
+      <div className="h-full flex-shrink">
         <SideNav />
       </div>
       <div className="flex flex-grow">{children}</div>

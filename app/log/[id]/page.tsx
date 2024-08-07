@@ -89,7 +89,6 @@ export default async function Page({
                         </p>
                       </div>
                     </div>
-                    {/* <ChevronRightIcon className="h-5 w-5 text-gray-500" /> */}
                   </div>
                 </div>
               </div>

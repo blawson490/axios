@@ -20,11 +20,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen overflow-hidden bg-purple-50">
-      {/* <div className="w-full flex-none md:w-64">
-            <SideNav />
-          </div> */}
-      {children}
-    </div>
+    <div className="flex h-screen overflow-hidden bg-purple-50">{children}</div>
   );
 }

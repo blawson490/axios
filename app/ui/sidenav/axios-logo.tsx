@@ -1,7 +1,12 @@
 import { inter } from '@/app/ui/fonts';
+import clsx from 'clsx';
 import Image from 'next/image';
 
-export default function AxiosLogo() {
+interface NavLinksProps {
+  isOpen: boolean;
+}
+
+export default function AxiosLogo({ isOpen }: NavLinksProps) {
   return (
     <div
       className={`${inter.className} font-bold text-purple-800 flex flex-row items-center justify-start ps-4 gap-3 leading-none`}
@@ -13,7 +18,14 @@ export default function AxiosLogo() {
         className="hidden md:block"
         alt="Axios Logo"
       />
-      <p className="text-xl">Axios</p>
+      <p
+        className={clsx('text-xl', {
+          'md:hidden ': !isOpen,
+          'md:block': isOpen,
+        })}
+      >
+        Axios
+      </p>
     </div>
   );
 }

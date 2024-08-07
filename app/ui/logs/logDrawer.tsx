@@ -47,16 +47,19 @@ export default async function LogDrawer({ log }: { log: LogEntry }) {
               </button>
             </DrawerClose>
             <DrawerTitle className="p-1">Back to logs</DrawerTitle>
-            {/* <DrawerDescription>See the details of the activity log.</DrawerDescription> */}
           </div>
           <div className="flex flex-row justify-center items-center gap-4">
             <div className="flex flex-row justify-center gap-2">
-              <button className="rounded-md p-1 border">
-                <ArrowUpOnSquareIcon className="text-black w-7 h-5" />
-              </button>
               <Link
+                target="_Blank"
                 href={`/log/${log.logId}`}
-                className="rounded-md p-1 px-2 border"
+                className="rounded-md p-1 border"
+              >
+                <ArrowUpOnSquareIcon className="text-black w-7 h-5" />
+              </Link>
+              <Link
+                href={`/dashboard/logs/${log.logId}`}
+                className="rounded-md flex justify-center items-center px-2 border"
               >
                 <p className="text-xs font-medium">View Full Details</p>
               </Link>

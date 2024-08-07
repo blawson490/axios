@@ -1,34 +1,73 @@
+'use client';
 import Link from 'next/link';
 import NavLinks from '@/app/ui/sidenav/nav-links';
 import AxiosLogo from '@/app/ui/sidenav/axios-logo';
-import { PowerIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect, useRef } from 'react';
+import clsx from 'clsx';
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+} from '@heroicons/react/24/outline';
 
 export default function SideNav() {
+  const [isOpen, setIsOpen] = useState(true);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sidebarRef]);
+
   return (
-    <div className="flex h-full flex-col px-3 pb-4 md:px-0 bg-white border-r-2">
-      <Link
-        className="mb-2 flex h-10 items-center justify-center bg-white p-2 md:h-16 border-b-2"
-        href="/"
+    <div
+      ref={sidebarRef}
+      className={clsx(
+        'flex h-full flex-col px-3 pb-4 md:px-0 bg-white border-r transition-width duration-300 shadow-lg',
+        { 'w-64': isOpen, 'w-16': !isOpen }
+      )}
+    >
+      <div
+        className="mb-2 flex h-10 items-center justify-center bg-white p-2 md:h-16 border-b cursor-pointer"
+        onClick={() => setIsOpen(true)}
       >
         <div className="w-full">
-          <AxiosLogo />
+          <AxiosLogo isOpen={isOpen} />
         </div>
-      </Link>
+      </div>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
-        <NavLinks />
+        <NavLinks isOpen={isOpen} />
         <div className="hidden h-auto w-full grow rounded-md md:block"></div>
-        <div className="flex flex-col items-center justify-center">
-          {/* <form className='w-full px-2 py-2' 
-            action={async () => {
-              'use server';
-              await signOut();
-            }}>
-              <button className="flex w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-purple-50 hover:text-purple-600 md:flex-none md:justify-start md:p-2 md:px-3 border-2">
-                <div className="flex items-center w-full justify-center md:block">Sign Out</div>
+        <div className="w-full px-2 text-center flex flex-col items-center justify-center">
+          <div className={clsx('flex', { 'w-full justify-end': isOpen })}>
+            {isOpen ? (
+              <button
+                className="bg-purple-50 rounded-md border hover:bg-purple-100 p-2"
+                onClick={() => setIsOpen(false)}
+              >
+                <ChevronDoubleLeftIcon className="w-4 h-4" />
               </button>
-            </form> */}
+            ) : (
+              <button
+                className="bg-purple-50 rounded-md border hover:bg-purple-100 p-2"
+                onClick={() => setIsOpen(true)}
+              >
+                <ChevronDoubleRightIcon className="w-4 h-4" />
+              </button>
+            )}
+          </div>
           <hr className="my-2 border-gray-300 border-1 w-full" />
-          <p className="text-xs text-gray-400">@ 2023 Axios.in, Inc.</p>
+          <p className="text-xs text-gray-400">@ 2023 Axios Inc.</p>
         </div>
       </div>
     </div>
