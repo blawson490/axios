@@ -15,11 +15,11 @@ export default function AxiosLogo({ isOpen }: NavLinksProps) {
         src="/axios-logo.png"
         width={20}
         height={20}
-        className="hidden md:block"
+        className="block"
         alt="Axios Logo"
       />
       <p
-        className={clsx('text-xl', {
+        className={clsx('text-xl hidden md:block', {
           'md:hidden ': !isOpen,
           'md:block': isOpen,
         })}

@@ -34,6 +34,8 @@ import { Tabs } from '@/app/ui/tabs';
 import { TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs';
 import ConditionalAccessStatus from '@/app/ui/logs/conditionalAccessStatus';
 import { Component } from '@/app/ui/users/chart';
+import OverviewCard from '@/app/ui/overviewCard';
+import { title } from 'process';
 
 export const metadata: Metadata = {
   title: 'Log',
@@ -68,7 +70,7 @@ export default async function Page({
   return (
     <div className="flex flex-col w-full">
       <TopBar breadcrumbs={breadcrumbs} />
-      <div className="flex flex-row flex-grow md:overflow-y-auto">
+      <div className="flex flex-row flex-grow">
         <div
           className="w-full h-full bg-white"
           style={{ marginRight: '-100px' }}
@@ -80,7 +82,7 @@ export default async function Page({
                 <p className="text-gray-500 font-semibold text-lg">
                   User Details:
                 </p>
-                <div className="flex flex-row p-2 hover:bg-gray-100 w-full rounded-md items-center justify-between">
+                <div className="flex flex-row p-2 w-full rounded-md items-center justify-between">
                   <div className="flex flex-row gap-3 items-center justify-center">
                     <InitialsAvatar name={user.displayName} />
                     <div className="flex-col">
@@ -97,7 +99,41 @@ export default async function Page({
                 </div>
               </div>
             </div>
-            <div className="flex w-1/2 p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full p-4 gap-2">
+  <div className="p-2">
+    <OverviewCard cardInfo={{
+      title: 'Total Sign-in Attempts',
+      value: 836,
+      trendValue: '+25',
+      percentageIncrease: 25,
+    }} />
+  </div>
+  <div className="p-2">
+    <OverviewCard cardInfo={{
+      title: 'Non-US Attempts',
+      value: 353,
+      trendValue: '+60',
+      percentageIncrease: 60,
+    }} />
+  </div>
+  <div className="p-2">
+    <OverviewCard cardInfo={{
+      title: 'Successful Attempts',
+      value: 539,
+      trendValue: '+10',
+      percentageIncrease: 10,
+    }} />
+  </div>
+  <div className="p-2">
+    <OverviewCard cardInfo={{
+      title: 'Failed Attempts',
+      value: 297,
+      trendValue: '+54',
+      percentageIncrease: 54,
+    }} />
+  </div>
+</div>
+            <div className="flex w-full xl:w-1/2 p-4">
               <Component />
             </div>
           </div>

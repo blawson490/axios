@@ -33,33 +33,33 @@ export default function SideNav() {
     <div
       ref={sidebarRef}
       className={clsx(
-        'flex h-full flex-col px-3 pb-4 md:px-0 bg-white border-r transition-width duration-300 shadow-lg',
+        'flex h-dvh flex-col pb-4 px-0 bg-white border-r transition-width duration-300 shadow-lg',
         { 'w-64': isOpen, 'w-16': !isOpen }
       )}
     >
       <div
-        className="mb-2 flex h-10 items-center justify-center bg-white p-2 md:h-16 border-b cursor-pointer"
+        className="mb-2 flex items-center justify-center bg-white p-2 h-16 border-b cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
         <div className="w-full">
           <AxiosLogo isOpen={isOpen} />
         </div>
       </div>
-      <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
+      <div className="flex grow justify-between flex-col space-x-0 space-y-2">
         <NavLinks isOpen={isOpen} />
-        <div className="hidden h-auto w-full grow rounded-md md:block"></div>
+        <div className="h-auto w-full grow rounded-md block"></div>
         <div className="w-full px-2 text-center flex flex-col items-center justify-center">
           <div className={clsx('flex', { 'w-full justify-end': isOpen })}>
             {isOpen ? (
               <button
-                className="bg-purple-50 rounded-md border hover:bg-purple-100 p-2"
+                className="bg-purple-50 hidden md:block rounded-md border hover:bg-purple-100 p-2"
                 onClick={() => setIsOpen(false)}
               >
                 <ChevronDoubleLeftIcon className="w-4 h-4" />
               </button>
             ) : (
               <button
-                className="bg-purple-50 rounded-md border hover:bg-purple-100 p-2"
+                className="bg-purple-50 hidden md:block rounded-md border hover:bg-purple-100 p-2"
                 onClick={() => setIsOpen(true)}
               >
                 <ChevronDoubleRightIcon className="w-4 h-4" />

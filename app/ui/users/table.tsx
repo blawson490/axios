@@ -1,6 +1,7 @@
 import { fetchFilteredUsers } from '@/app/lib/database-placeholder';
 import InitialsAvatar from '../initials-avatar';
 import { UserEntry } from '@/app/lib/definitions';
+import Link from 'next/link';
 
 export default async function UsersTable({
   query,
@@ -64,22 +65,31 @@ export default async function UsersTable({
               {users?.map((user: UserEntry) => (
                 <tr
                   key={user.id}
-                  className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                  className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg hover:bg-gray-100 cursor-pointer"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
+
+                  <Link href={`/dashboard/users/${user.id}`}>
                     <div className="flex items-center gap-3">
                       <InitialsAvatar name={user.displayName} />
                       <p>{user.displayName}</p>
                     </div>
+                    </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
+                  <Link href={`/dashboard/users/${user.id}`}>
                     {user.userPrincipalName}
+                    </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
+                  <Link href={`/dashboard/users/${user.id}`}>
                     {user.jobTitle}
+                    </Link>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
+                  <Link href={`/dashboard/users/${user.id}`}>
                     {user.jobTitle}
+                    </Link>
                   </td>
                 </tr>
               ))}

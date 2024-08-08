@@ -54,7 +54,7 @@ export default async function Page({
     },
     {
       label: `${log.logId}`,
-      href: `/dashboard/logs/${log.logId}`,
+      href: `/log/${log.logId}`,
       active: true,
       icon: ClipboardDocumentCheckIcon,
     },
@@ -116,9 +116,9 @@ export default async function Page({
                     <div className="flex flex-row">
                       <div className="flex flex-row gap-3 items-center justify-center">
                         <div className="flex-col">
-                          <p>
+                          <div>
                             <SuccessStatus status={log.statusErrorCode} />
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -284,11 +284,11 @@ export default async function Page({
                             <p className="text-gray-500">
                               Conditional Access Status:
                             </p>
-                            <p className="font-medium">
+                            <div className="font-medium">
                               <ConditionalAccessStatus
                                 status={log.conditionalAccessStatus}
                               />
-                            </p>
+                            </div>
                           </div>
                           <div className="text-sm flex flex-wrap gap-1">
                             <p className="text-gray-500">Error Code:</p>

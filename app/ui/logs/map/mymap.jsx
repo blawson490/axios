@@ -10,17 +10,7 @@ export default function MyMap({ location, mapZoom }) {
   const latLongLocation = { lng: location.long, lat: location.lat };
   const [zoom] = useState(mapZoom);
   maptilersdk.config.apiKey = '8hXtz0aVeDD9gkZhACWl';
-  const markerContainer = document.createElement('div');
-  markerContainer.className = 'relative pr-2';
 
-  const pingDiv = document.createElement('div');
-  pingDiv.className =
-    'w-16 h-16 bg-red-500 rounded-full animate-ping absolute -top-7 -left-7';
-  markerContainer.appendChild(pingDiv);
-
-  const markerDiv = document.createElement('div');
-  markerDiv.className = 'w-2 h-2 bg-red-500 rounded-full';
-  markerContainer.appendChild(markerDiv);
 
   useEffect(() => {
     if (map.current) return; // stops map from initializing more than once
@@ -31,6 +21,18 @@ export default function MyMap({ location, mapZoom }) {
       center: [latLongLocation.lng, latLongLocation.lat],
       zoom: zoom,
     });
+
+    const markerContainer = document.createElement('div');
+    markerContainer.className = 'relative pr-2';
+  
+    const pingDiv = document.createElement('div');
+    pingDiv.className =
+      'w-16 h-16 bg-red-500 rounded-full animate-ping absolute -top-7 -left-7';
+    markerContainer.appendChild(pingDiv);
+  
+    const markerDiv = document.createElement('div');
+    markerDiv.className = 'w-2 h-2 bg-red-500 rounded-full';
+    markerContainer.appendChild(markerDiv);
 
     new maptilersdk.Marker({ element: markerContainer, className: 'marker' })
       .setLngLat([latLongLocation.lng, latLongLocation.lat])
