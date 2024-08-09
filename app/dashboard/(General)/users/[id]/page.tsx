@@ -69,7 +69,8 @@ export default async function Page({
 
   return (
     <div className="flex flex-col w-full">
-      <TopBar breadcrumbs={breadcrumbs} />
+      {/* <TopBar breadcrumbs={breadcrumbs} /> */}
+      {/* Insert Breadcrumbs here */}
       <div className="flex flex-row flex-grow">
         <div
           className="w-full h-full bg-white"
@@ -79,19 +80,19 @@ export default async function Page({
           <div className="flex h-full flex-col gap-1">
             <div className=" flex flex-row w-full">
               <div className="flex-col p-4 w-full">
-                <p className="text-gray-500 font-semibold text-lg">
+                {/* <p className="text-gray-500 font-semibold text-lg">
                   User Details:
-                </p>
+                </p> */}
                 <div className="flex flex-row p-2 w-full rounded-md items-center justify-between">
                   <div className="flex flex-row gap-3 items-center justify-center">
-                    <InitialsAvatar name={user.displayName} />
+                    {/* <InitialsAvatar name={user.displayName} /> */}
                     <div className="flex-col">
                       <div className="flex flex-row gap-2 items-center">
-                        <p className="font-semibold">
+                        <p className="font-semibold text-xl">
                           {truncateString(user.displayName, 50)}
                         </p>
                       </div>
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-gray-500 font-light text-sm">
                         {truncateString(user.userPrincipalName, 50)}
                       </p>
                     </div>
@@ -100,39 +101,47 @@ export default async function Page({
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full p-4 gap-2">
-  <div className="p-2">
-    <OverviewCard cardInfo={{
-      title: 'Total Sign-in Attempts',
-      value: 836,
-      trendValue: '+25',
-      percentageIncrease: 25,
-    }} />
-  </div>
-  <div className="p-2">
-    <OverviewCard cardInfo={{
-      title: 'Non-US Attempts',
-      value: 353,
-      trendValue: '+60',
-      percentageIncrease: 60,
-    }} />
-  </div>
-  <div className="p-2">
-    <OverviewCard cardInfo={{
-      title: 'Successful Attempts',
-      value: 539,
-      trendValue: '+10',
-      percentageIncrease: 10,
-    }} />
-  </div>
-  <div className="p-2">
-    <OverviewCard cardInfo={{
-      title: 'Failed Attempts',
-      value: 297,
-      trendValue: '+54',
-      percentageIncrease: 54,
-    }} />
-  </div>
-</div>
+              <div className="p-2">
+                <OverviewCard
+                  cardInfo={{
+                    title: 'Total Sign-in Attempts',
+                    value: 836,
+                    trendValue: '+25',
+                    percentageIncrease: 25,
+                  }}
+                />
+              </div>
+              <div className="p-2">
+                <OverviewCard
+                  cardInfo={{
+                    title: 'Non-US Attempts',
+                    value: 353,
+                    trendValue: '+60',
+                    percentageIncrease: 60,
+                  }}
+                />
+              </div>
+              <div className="p-2">
+                <OverviewCard
+                  cardInfo={{
+                    title: 'Successful Attempts',
+                    value: 539,
+                    trendValue: '+10',
+                    percentageIncrease: 10,
+                  }}
+                />
+              </div>
+              <div className="p-2">
+                <OverviewCard
+                  cardInfo={{
+                    title: 'Failed Attempts',
+                    value: 297,
+                    trendValue: '+54',
+                    percentageIncrease: 54,
+                  }}
+                />
+              </div>
+            </div>
             <div className="flex w-full xl:w-1/2 p-4">
               <Component />
             </div>
